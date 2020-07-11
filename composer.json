@@ -1,0 +1,54 @@
+{
+    "name": "acamposm/snmp-poller",
+    "description": "Snmp Poller class",
+    "keywords": [
+        "acamposm",
+        "snmp-poller"
+    ],
+    "homepage": "https://github.com/acamposm/snmp-poller",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Angel Campos",
+            "email": "angel.campos.m@outlook.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "illuminate/support": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Acamposm\\SnmpPoller\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Acamposm\\SnmpPoller\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Acamposm\\SnmpPoller\\SnmpPollerServiceProvider"
+            ],
+            "aliases": {
+                "SnmpPoller": "Acamposm\\SnmpPoller\\SnmpPollerFacade"
+            }
+        }
+    }
+}
