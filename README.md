@@ -1,16 +1,49 @@
-# Very short description of the package
+# Laravel SNMP Poller Package
 
+![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/acamposm/snmp-poller)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/acamposm/snmp-poller.svg?style=flat)](https://packagist.org/packages/acamposm/snmp-poller)
 [![Build Status](https://img.shields.io/travis/acamposm/snmp-poller/master.svg?style=flat)](https://travis-ci.org/acamposm/snmp-poller)
 [![Quality Score](https://img.shields.io/scrutinizer/g/acamposm/snmp-poller.svg?style=flat)](https://scrutinizer-ci.com/g/acamposm/snmp-poller)
 [![StyleCI](https://github.styleci.io/repos/257021169/shield?branch=master&style=flat)](https://github.styleci.io/repos/257021169)
 [![Total Downloads](https://img.shields.io/packagist/dt/acamposm/snmp-poller.svg?style=flat)](https://packagist.org/packages/acamposm/snmp-poller)
 
-This laravel package allows you to run SNMP queries to the snmp-agent of network hosts through laravel applications.
+This Laravel package allows you to run SNMP queries to the snmp-agent of network hosts through laravel applications.
 
 Before you run any SNMP query in your [Laravel](https://laravel.com/) application, you must install snmp in the operating system and enable the PHP extension **ext-php** in the php.ini to make queries.
 
+- [Installation](installation)
+  - [Requirements](requirements)
+  - [Composer Install](composer-install)
+  - [Publish vendor assets](publish-vendor-assets)
+- [Usage](usage)
+  - [Single SNMP Poller class](single-snmp-poller-class)
+  - [Multiple SNMP Poller classes](multiple-snmp-poller-classes)
+
 ## Installation
+
+### Requirements
+
+At the Operating System level, you need to install net-snmp.
+
+**Debian**
+
+```bash
+apt-get install -y snmp
+```
+
+**Centos / RHEL**
+
+```bash
+yum install \
+  net-snmp.x86_64 \
+  net-snmp-agent-libs.x86_64 \
+  net-snmp-libs.x86_64 \
+  php-snmp.x86_64
+```
+
+At php.ini enable the extension ext-php.
+
+### Composer Install
 
 You can install the package via composer:
 
@@ -18,7 +51,17 @@ You can install the package via composer:
 composer require acamposm/snmp-poller
 ```
 
+### Publish vendor assets
+
+Running this command, you can publish the vendor assets. This allows to modify the default package configuration.
+
+````bash
+php artisan snmp:install
+````
+
 ## Usage
+
+
 
 ### Single SNMP Poller class
 
@@ -376,6 +419,8 @@ The output of an SNMP query to the snmp-agent of a network host with multiple SN
 
 ### Testing
 
+For running the tests, in the console run:
+
 ``` bash
 composer test
 ```
@@ -386,7 +431,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ### Security
 
@@ -399,7 +444,3 @@ If you discover any security related issues, please email angel.campos.m@outlook
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
