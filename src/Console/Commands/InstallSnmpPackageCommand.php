@@ -1,10 +1,10 @@
 <?php
 
-namespace Acamposm\SnmpPoller\Commands;
+namespace Acamposm\SnmpPoller\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class InstallPackage extends Command
+class InstallSnmpPackageCommand extends Command
 {
     protected $signature = 'ping:install';
 
