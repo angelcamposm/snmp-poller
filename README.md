@@ -11,13 +11,13 @@ This Laravel package allows you to run SNMP queries to the snmp-agent of network
 
 Before you run any SNMP query in your [Laravel](https://laravel.com/) application, you must install snmp in the operating system and enable the PHP extension **ext-php** in the php.ini to make queries.
 
-- [Installation](installation)
-  - [Requirements](requirements)
-  - [Composer Install](composer-install)
-  - [Publish vendor assets](publish-vendor-assets)
-- [Usage](usage)
-  - [Single SNMP Poller class](single-snmp-poller-class)
-  - [Multiple SNMP Poller classes](multiple-snmp-poller-classes)
+- [Installation](#installation)
+  - [Requirements](#requirements)
+  - [Composer Install](#composer-install)
+  - [Publish vendor assets](#publish-vendor-assets)
+- [Usage](#usage)
+  - [Single SNMP Poller class](#single-snmp-poller-class)
+  - [Multiple SNMP Poller classes](#multiple-snmp-poller-classes)
 
 ## Installation
 
