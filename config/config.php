@@ -2,21 +2,18 @@
 
 return [
 
-    /**
-     *
-     */
     'session' => [
 
         'properties' => [
 
             /**
-             * Controls the way enum values are printed
+             * Controls the way enum values are printed.
              *
              * Parameter toggles if walk/get etc. should automatically lookup
              * enum values in the MIB and return them together with their
              * human readable string.
              *
-             * @var  bool
+             * @var bool
              */
             'enum_print' => false,
 
@@ -24,19 +21,19 @@ return [
              * Controls which failures will raise SNMPException instead of warning.
              * Use bitwise OR'ed SNMP::ERRNO_* constants.
              *
-             * @var  bool
+             * @var bool
              */
             'exceptions_enabled' => true,
 
             /**
              *  Maximum OID per GET/SET/GETBULK request.
              *
-             * @var  int
+             * @var int
              */
             'max_oids' => 20,
 
             /**
-             * Controls OID output format
+             * Controls OID output format.
              *
              * SNMP_OID_OUTPUT_FULL	    .iso.org.dod.internet.mgmt.mib-2.system.sysUpTime.sysUpTimeInstance
              * SNMP_OID_OUTPUT_NUMERIC	.1.3.6.1.2.1.1.3.0
@@ -45,12 +42,12 @@ return [
              * SNMP_OID_OUTPUT_UCD	    system.sysUpTime.sysUpTimeInstance
              * SNMP_OID_OUTPUT_NONE	    Undefined
              *
-             * @var  int
+             * @var int
              */
             'oid_output_format' => SNMP_OID_OUTPUT_NUMERIC,
 
             /**
-             * Controls disabling check for increasing OID while walking OID tree
+             * Controls disabling check for increasing OID while walking OID tree.
              *
              * Some SNMP agents are known for returning OIDs out of order but can
              * complete the walk anyway. Other agents return OIDs that are out of
@@ -76,7 +73,7 @@ return [
              * Additionally, if quick_print is not enabled, the library prints
              * additional hex values for all strings of three characters or less.
              *
-             * @var  bool
+             * @var bool
              */
             'quick_print' => false,
 
@@ -97,7 +94,7 @@ return [
              *
              * @var
              */
-            'value_retrieval' => SNMP_VALUE_OBJECT|SNMP_VALUE_PLAIN,
+            'value_retrieval' => SNMP_VALUE_OBJECT | SNMP_VALUE_PLAIN,
         ],
     ],
 ];
