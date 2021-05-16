@@ -22,7 +22,7 @@ class InstallPackage extends Command
 
         $this->call('vendor:publish', [
             '--provider' => 'Acamposm\SnmpPoller\SnmpPollerServiceProvider',
-            '--tag' => 'config',
+            '--tag'      => 'config',
         ]);
 
         $this->info('Snmp Poller Package installed.');
