@@ -14,7 +14,7 @@ class SnmpPollerServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->bind('snmp-poller', function($app) {
+        $this->app->bind('snmp-poller', function ($app) {
             return new SnmpPoller();
         });
     }

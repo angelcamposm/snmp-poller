@@ -24,13 +24,12 @@ final class SnmpTypeCounter32 implements SnmpParserInterface
     }
 
     /**
-     *
      * @return int
      */
     public function Parse(): int
     {
         if (str_contains($this->data, ':')) {
-            return (int)explode(': ', $this->data)[1];
+            return (int) explode(': ', $this->data)[1];
         }
 
         return (int) $this->data;

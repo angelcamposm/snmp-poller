@@ -24,15 +24,15 @@ class SnmpParser
     }
 
     /**
-     *
-     * @param int $type
+     * @param int   $type
      * @param mixed $value
+     *
      * @return mixed
      */
     private function ParseType(int $type, mixed $value): mixed
     {
         /**
-         * SNMP DATA TYPE CONSTANTS
+         * SNMP DATA TYPE CONSTANTS.
          */
         // SNMP_INTEGER   =  2
         // SNMP_BIT_STR   =  3
@@ -48,21 +48,21 @@ class SnmpParser
         // SNMP_UINTEGER  =  71
 
         return match ($type) {
-            SNMP_BIT_STR     => 'bit_str: ' . $value,
+            SNMP_BIT_STR     => 'bit_str: '.$value,
             65, SNMP_COUNTER => (new SnmpTypeCounter32($value))->Parse(),
             SNMP_COUNTER64   => (new SnmpTypeCounter64($value))->Parse(),
             SNMP_INTEGER     => (new SnmpTypeInteger($value))->Parse(),
             SNMP_IPADDRESS   => (new SnmpTypeIPAddress($value))->Parse(),
-            SNMP_NULL        => 'null' . $value,
+            SNMP_NULL        => 'null'.$value,
             SNMP_OBJECT_ID   => (new SnmpTypeOID($value))->Parse(),
             SNMP_OCTET_STR   => (new SnmpTypeOctetString($value))->Parse(),
-            SNMP_OPAQUE      => 'opaque: ' . $value,
+            SNMP_OPAQUE      => 'opaque: '.$value,
             SNMP_TIMETICKS   => (new SnmpTypeTimeticks($value))->Parse(),
-            SNMP_UNSIGNED    => 'unsinged: ' . $value,
-            SNMP_UINTEGER    => 'uinteger: ' . $value,
-            default => [
-                'type' => $type,
-                'value' => $value
+            SNMP_UNSIGNED    => 'unsinged: '.$value,
+            SNMP_UINTEGER    => 'uinteger: '.$value,
+            default          => [
+                'type'  => $type,
+                'value' => $value,
             ],
         };
     }

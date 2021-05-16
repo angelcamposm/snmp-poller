@@ -24,7 +24,6 @@ final class SnmpTypeGauge32 implements SnmpParserInterface
     }
 
     /**
-     *
      * @return int
      */
     public function Parse(): mixed

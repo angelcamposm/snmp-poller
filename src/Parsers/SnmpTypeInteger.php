@@ -25,7 +25,7 @@ final class SnmpTypeInteger implements SnmpParserInterface
 
     /**
      * Returns the parsed data.
-     * 
+     *
      * @return int
      */
     public function Parse(): mixed

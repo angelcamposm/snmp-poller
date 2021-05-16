@@ -24,7 +24,6 @@ final class SnmpTypeCounter64 implements SnmpParserInterface
     }
 
     /**
-     *
      * @return int
      */
     public function Parse(): int

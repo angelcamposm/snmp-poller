@@ -62,8 +62,8 @@ class SnmpBasePoller implements SnmpPollerInterface
     {
         return (object) [
             'is_table' => $this->is_table,
-            'oids' => $this->oids,
-            'table' => $this->table,
+            'oids'     => $this->oids,
+            'table'    => $this->table,
         ];
     }
 }

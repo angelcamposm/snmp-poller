@@ -22,14 +22,13 @@ final class SnmpTypeOID implements SnmpParserInterface
     {
         $replace = [
             'OID:',
-            '"'
+            '"',
         ];
 
         $this->data = trim(str_replace($replace, '', $data));
     }
 
     /**
-     *
      * @return string
      */
     public function Parse(): string

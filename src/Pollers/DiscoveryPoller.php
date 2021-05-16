@@ -14,7 +14,7 @@ final class DiscoveryPoller extends SnmpBasePoller
     /**
      * Name of the SNMP Table.
      *
-     * @var  string
+     * @var string
      */
     protected string $table = '';
 
