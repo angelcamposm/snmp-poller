@@ -33,6 +33,7 @@ class SnmpPoller
      * Set the SNMP session to the host.
      *
      * @param SNMP $session
+     *
      * @return $this
      */
     public function setSnmpSession(SNMP $session): SnmpPoller
@@ -44,16 +45,16 @@ class SnmpPoller
         return $this;
     }
 
-
     /**
      * Adds a SNMP poller.
      *
      * @param string $poller
+     *
      * @return SnmpPoller
      */
     public function addPoller(string $poller): SnmpPoller
     {
-        $this->pollers[] = new $poller;
+        $this->pollers[] = new $poller();
 
         return $this;
     }
@@ -62,12 +63,13 @@ class SnmpPoller
      * Adds an array of SNMP Pollers.
      *
      * @param array $pollers
+     *
      * @return SnmpPoller
      */
     public function addPollers(array $pollers): SnmpPoller
     {
-        foreach($pollers as $poller) {
-            $this->pollers[] = new $poller;
+        foreach ($pollers as $poller) {
+            $this->pollers[] = new $poller();
         }
 
         return $this;
@@ -83,22 +85,19 @@ class SnmpPoller
         return $this->pollers;
     }
 
-
     /**
-     * Fetch $snmp_walk_data and return as table
+     * Fetch $snmp_walk_data and return as table.
      *
-     * @param   array   $snmp_walk_data  SNMP query results
+     * @param array $snmp_walk_data SNMP query results
      *
-     * @return  array
+     * @return array
      */
     private function transposeTable(array $snmp_walk_data): array
     {
         $table = [];
 
-        foreach($snmp_walk_data as $column => $indexes)
-        {
-            foreach($indexes as $index => $value)
-            {
+        foreach ($snmp_walk_data as $column => $indexes) {
+            foreach ($indexes as $index => $value) {
                 $table[$index][$column] = $value;
             }
         }
@@ -107,8 +106,9 @@ class SnmpPoller
     }
 
     /**
-     * @return array
      * @throws Exception
+     *
+     * @return array
      */
     public function run(): array
     {
@@ -122,7 +122,7 @@ class SnmpPoller
             throw new Exception('Pollers not defined.');
         }
 
-        foreach($this->pollers as $poller) {
+        foreach ($this->pollers as $poller) {
             $pollers_data[get_class($poller)] = $this->getPollerData($poller);
         }
 
@@ -171,6 +171,7 @@ class SnmpPoller
      * Runs the SNMP query on the host.
      *
      * @param $poller
+     *
      * @return array
      */
     private function getPollerData($poller): array
@@ -190,7 +191,7 @@ class SnmpPoller
         $this->session->exceptions_enabled = true;
         $this->session->oid_output_format = SNMP_OID_OUTPUT_NUMERIC;
         $this->session->quick_print = true;
-        $this->session->valueretrieval = SNMP_VALUE_OBJECT|SNMP_VALUE_PLAIN;
+        $this->session->valueretrieval = SNMP_VALUE_OBJECT | SNMP_VALUE_PLAIN;
     }
 
     /**
@@ -202,8 +203,8 @@ class SnmpPoller
     {
         return [
             'data' => [
-                'code' => $this->session->getErrno(),
-                'message' =>$this->session->getError(),
+                'code'    => $this->session->getErrno(),
+                'message' => $this->session->getError(),
             ],
             'result' => 'Exception',
         ];
@@ -213,6 +214,7 @@ class SnmpPoller
      * Get a SNMP leaf.
      *
      * @param SnmpPollerInterface $poller
+     *
      * @return array
      */
     private function get(SnmpPollerInterface $poller): array
@@ -220,7 +222,6 @@ class SnmpPoller
         $snmp_get = [];
 
         foreach ($poller->getOids() as $key => $oid) {
-
             $query = @$this->session->get($oid, true);
 
             if ($query === false) {
@@ -233,8 +234,8 @@ class SnmpPoller
         }
 
         return [
-            'data' => $snmp_get,
-            'result' => 'OK'
+            'data'   => $snmp_get,
+            'result' => 'OK',
         ];
     }
 
@@ -242,14 +243,14 @@ class SnmpPoller
      * Walks over a column of a SNMP table.
      *
      * @param SnmpPollerInterface $poller
+     *
      * @return array
      */
     private function walk(SnmpPollerInterface $poller): array
     {
         $snmp_walk = [];
 
-        foreach($poller->getOids() as $column => $oid) {
-
+        foreach ($poller->getOids() as $column => $oid) {
             $query = @$this->session->walk($oid, true);
 
             if ($query === false) {
@@ -257,7 +258,6 @@ class SnmpPoller
             }
 
             foreach ($query as $row => $value) {
-
                 $parser = new SnmpParser($value);
 
                 $snmp_walk[$column][$row] = $parser->parse();
@@ -265,9 +265,9 @@ class SnmpPoller
         }
 
         return [
-            'data' => $poller->isTable() ? $this->transposeTable($snmp_walk) : $snmp_walk,
+            'data'   => $poller->isTable() ? $this->transposeTable($snmp_walk) : $snmp_walk,
             'result' => 'OK',
-            'table' => $poller->getTable(),
+            'table'  => $poller->getTable(),
         ];
     }
 }

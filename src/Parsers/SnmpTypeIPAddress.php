@@ -29,7 +29,6 @@ final class SnmpTypeIPAddress implements SnmpParserInterface
     }
 
     /**
-     *
      * @return string
      */
     public function Parse(): string

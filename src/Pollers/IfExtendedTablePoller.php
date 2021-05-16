@@ -12,9 +12,9 @@ final class IfExtendedTablePoller extends SnmpBasePoller
     protected bool $is_table = true;
 
     /**
-     * Name of the SNMP Table
+     * Name of the SNMP Table.
      *
-     * @var  string
+     * @var string
      */
     protected string $table = 'ifXTable';
 

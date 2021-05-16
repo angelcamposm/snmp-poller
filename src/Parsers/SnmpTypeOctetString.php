@@ -31,17 +31,14 @@ final class SnmpTypeOctetString implements SnmpParserInterface
     }
 
     /**
-     *
      * @return int
      */
     public function Parse(): string
     {
         if ($this->is_binary($this->data)) {
-
-            $data = implode(':', unpack("H*", $this->data));
+            $data = implode(':', unpack('H*', $this->data));
 
             if (strlen($data) == 12) {
-
                 $mac = implode(':', str_split($data, 2));
 
                 if (filter_var($mac, FILTER_VALIDATE_MAC)) {
@@ -56,12 +53,13 @@ final class SnmpTypeOctetString implements SnmpParserInterface
     }
 
     /**
-     * Check if value is a binary string. (b"")
+     * Check if value is a binary string. (b"").
      *
      * @param string $string
+     *
      * @return bool
      */
-    public function is_binary(string $string):bool
+    public function is_binary(string $string): bool
     {
         if (!ctype_print($string)) {
             return true;
@@ -69,6 +67,4 @@ final class SnmpTypeOctetString implements SnmpParserInterface
 
         return false;
     }
-
-
 }

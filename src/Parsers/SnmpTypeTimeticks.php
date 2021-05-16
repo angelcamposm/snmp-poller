@@ -24,7 +24,6 @@ final class SnmpTypeTimeticks implements SnmpParserInterface
     }
 
     /**
-     *
      * @return int
      */
     public function Parse(): int
