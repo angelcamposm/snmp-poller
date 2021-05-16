@@ -125,7 +125,6 @@ class SnmpPoller
         }
 
         foreach ($this->pollers as $poller) {
-
             $pollers_data[$this->getPollerClassName($poller)] = $this->getPollerData($poller);
         }
 
