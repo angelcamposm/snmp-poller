@@ -5,7 +5,9 @@ namespace Acamposm\SnmpPoller;
 use Acamposm\SnmpPoller\Interfaces\SnmpPollerInterface;
 use Acamposm\SnmpPoller\Parsers\SnmpParser;
 use Exception;
+use ReflectionClass;
 use SNMP;
+use stdClass;
 
 class SnmpPoller
 {
@@ -123,7 +125,8 @@ class SnmpPoller
         }
 
         foreach ($this->pollers as $poller) {
-            $pollers_data[get_class($poller)] = $this->getPollerData($poller);
+
+            $pollers_data[$this->getPollerClassName($poller)] = $this->getPollerData($poller);
         }
 
         $this->closeSnmpSession();
@@ -172,9 +175,9 @@ class SnmpPoller
      *
      * @param $poller
      *
-     * @return array
+     * @return stdClass
      */
-    private function getPollerData($poller): array
+    private function getPollerData($poller): stdClass
     {
         if ($poller->isTable()) {
             return $this->walk($poller);
@@ -197,11 +200,11 @@ class SnmpPoller
     /**
      * Returns an array with the error data.
      *
-     * @return array
+     * @return stdClass
      */
-    private function returnErrorData(): array
+    private function returnErrorData(): stdClass
     {
-        return [
+        return (object) [
             'data' => [
                 'code'    => $this->session->getErrno(),
                 'message' => $this->session->getError(),
@@ -215,9 +218,9 @@ class SnmpPoller
      *
      * @param SnmpPollerInterface $poller
      *
-     * @return array
+     * @return stdClass
      */
-    private function get(SnmpPollerInterface $poller): array
+    private function get(SnmpPollerInterface $poller): stdClass
     {
         $snmp_get = [];
 
@@ -233,8 +236,9 @@ class SnmpPoller
             $snmp_get[$key] = $parser->Parse();
         }
 
-        return [
+        return (object) [
             'data'   => $snmp_get,
+            'poller' => get_class($poller),
             'result' => 'OK',
         ];
     }
@@ -244,9 +248,9 @@ class SnmpPoller
      *
      * @param SnmpPollerInterface $poller
      *
-     * @return array
+     * @return stdClass
      */
-    private function walk(SnmpPollerInterface $poller): array
+    private function walk(SnmpPollerInterface $poller): stdClass
     {
         $snmp_walk = [];
 
@@ -264,10 +268,23 @@ class SnmpPoller
             }
         }
 
-        return [
+        return (object) [
             'data'   => $poller->isTable() ? $this->transposeTable($snmp_walk) : $snmp_walk,
+            'poller' => get_class($poller),
             'result' => 'OK',
             'table'  => $poller->getTable(),
         ];
+    }
+
+    /**
+     * Returns the name of the Poller class.
+     *
+     * @param SnmpPollerInterface $poller
+     *
+     * @return string
+     */
+    private function getPollerClassName(SnmpPollerInterface $poller): string
+    {
+        return (new ReflectionClass($poller))->getShortName();
     }
 }
