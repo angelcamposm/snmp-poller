@@ -2,6 +2,10 @@
 
 All notable changes to `snmp-poller` will be documented in this file
 
+## 1.1.0
+
+Added command `make:poller` to quickly generate a CustomPoller class from stubs.
+
 ## 1.0.0
 
 initial release
