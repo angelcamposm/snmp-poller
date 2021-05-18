@@ -7,6 +7,8 @@
 [![StyleCI](https://github.styleci.io/repos/257021169/shield?branch=master&style=flat)](https://github.styleci.io/repos/257021169)
 [![Total Downloads](https://img.shields.io/packagist/dt/acamposm/snmp-poller.svg?style=flat)](https://packagist.org/packages/acamposm/snmp-poller)
 
+<img src="img/PackageHeader.png">
+
 This Laravel package allows you to run SNMP queries to the snmp-agent of network hosts through laravel applications.
 
 Before you run any SNMP query in your [Laravel](https://laravel.com/) application, you must install snmp in the operating system and enable the PHP extension **ext-php** in the php.ini to make queries.
