@@ -10,11 +10,11 @@ env:
 
 before_script:
   - sudo apt-get update
-  - sudo apt-get install -y snmp
+  - sudo apt-get install -y apt-transport-https apt-utils curl snmp
   - sudo add-apt-repository -y ppa:ondrej/php
   - sudo apt-get update
-  - sudo apt-cache search snmp
-  - echo 'extension=snmp.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - sudo apt-get install -y php8.0-snmp
+  - echo 'extension="snmp.so"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - travis_retry composer self-update
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
