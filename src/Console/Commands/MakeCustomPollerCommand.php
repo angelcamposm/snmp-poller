@@ -47,27 +47,28 @@ class MakeCustomPollerCommand extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the CustomPoller.'],
-            ['table', InputArgument::REQUIRED, 'The name of the snmp table.']
+            ['table', InputArgument::REQUIRED, 'The name of the snmp table.'],
         ];
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Pollers';
+        return $rootNamespace.'\Pollers';
     }
 
     /**
      * Execute the console command.
      *
-     * @return bool|null
-     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @return bool|null
      */
     public function handle()
     {
@@ -84,8 +85,8 @@ class MakeCustomPollerCommand extends GeneratorCommand
         // Next, We will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
         // code is untouched. Otherwise, we will continue generating this class' files.
-        if ((! $this->hasOption('force') ||
-                ! $this->option('force')) &&
+        if ((!$this->hasOption('force') ||
+                !$this->option('force')) &&
             $this->alreadyExists($this->getNameInput())) {
             $this->error($this->type.' already exists!');
 
@@ -107,7 +108,6 @@ class MakeCustomPollerCommand extends GeneratorCommand
 
         return 0;
     }
-
 
     private function replaceStringInFile($filename, $string_to_replace, $replace_with): void
     {

@@ -2,8 +2,8 @@
 
 namespace Acamposm\SnmpPoller\Providers;
 
-use Acamposm\SnmpPoller\Console\Commands\MakeCustomPollerCommand;
 use Acamposm\SnmpPoller\Console\Commands\InstallSnmpPackageCommand;
+use Acamposm\SnmpPoller\Console\Commands\MakeCustomPollerCommand;
 use Acamposm\SnmpPoller\Facades\SnmpPoller;
 use Illuminate\Support\ServiceProvider;
 
