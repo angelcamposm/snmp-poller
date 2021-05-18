@@ -19,6 +19,14 @@ Before you run any SNMP query in your [Laravel](https://laravel.com/) applicatio
 - [Usage](#usage)
   - [Single SNMP Poller class](#single-snmp-poller-class)
   - [Multiple SNMP Poller classes](#multiple-snmp-poller-classes)
+- [Testing](#testing)
+- [Changelog](#changelog)
+- [Contributing](#contributing)
+- [Security](#security)
+- [Standards](#standards)
+- [Credits](#credits)
+- [License](#license)
+
 
 ## Installation
 
@@ -418,7 +426,7 @@ The output of an SNMP query to the snmp-agent of a network host with multiple SN
 ]
 ```
 
-### Testing
+## Testing
 
 For running the tests, in the console run:
 
@@ -426,7 +434,7 @@ For running the tests, in the console run:
 composer test
 ```
 
-### Changelog
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
@@ -434,9 +442,17 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
-### Security
+## Security
 
 If you discover any security related issues, please email angel.campos.m@outlook.com instead of using the issue tracker.
+
+## Standards
+
+The php package IPv4 Address Converter, comply with the next standards:
+
+- [PSR-1 - Basic Coding Standard](http://www.php-fig.org/psr/psr-1/)
+- [PSR-4 - Autoloading Standard](http://www.php-fig.org/psr/psr-4/)
+- [PSR-12 - Extended Coding Style Guide](https://www.php-fig.org/psr/psr-12/)
 
 ## Credits
 
