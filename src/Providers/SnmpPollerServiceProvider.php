@@ -2,6 +2,7 @@
 
 namespace Acamposm\SnmpPoller\Providers;
 
+use Acamposm\SnmpPoller\Console\Commands\MakeCustomPollerCommand;
 use Acamposm\SnmpPoller\Console\Commands\InstallSnmpPackageCommand;
 use Acamposm\SnmpPoller\Facades\SnmpPoller;
 use Illuminate\Support\ServiceProvider;
@@ -21,6 +22,7 @@ class SnmpPollerServiceProvider extends ServiceProvider
             // Registering package commands.
             $this->commands([
                 InstallSnmpPackageCommand::class,
+                MakeCustomPollerCommand::class,
             ]);
         }
     }
