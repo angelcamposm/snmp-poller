@@ -1,9 +1,8 @@
 # Laravel SNMP Poller Package
 
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/acamposm/snmp-poller)
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/acamposm/snmp-poller.svg?style=flat)](https://packagist.org/packages/acamposm/snmp-poller)
-[![Build Status](https://img.shields.io/travis/acamposm/snmp-poller/master.svg?style=flat)](https://travis-ci.org/acamposm/snmp-poller)
-[![Quality Score](https://img.shields.io/scrutinizer/g/acamposm/snmp-poller.svg?style=flat)](https://scrutinizer-ci.com/g/acamposm/snmp-poller)
+[![License](https://poser.pugx.org/acamposm/snmp-poller/license)](https://packagist.org/packages/acamposm/snmp-poller)
+[![Latest Stable Version](https://poser.pugx.org/acamposm/snmp-poller/v/stable)](https://packagist.org/packages/acamposm/snmp-poller)
 [![StyleCI](https://github.styleci.io/repos/257021169/shield?branch=master&style=flat)](https://github.styleci.io/repos/257021169)
 [![Total Downloads](https://img.shields.io/packagist/dt/acamposm/snmp-poller.svg?style=flat)](https://packagist.org/packages/acamposm/snmp-poller)
 
