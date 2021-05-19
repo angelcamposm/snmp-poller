@@ -15,18 +15,36 @@ final class SnmpPollerTest extends TestCase
         $this->assertInstanceOf(SNMP::class, $snmp);
     }
 
-    public function testCanCreateADiscoveryPollerInstance()
+    public function testCanCreateADiscoveryPollerInstance(): DiscoveryPoller
     {
-        $this->assertInstanceOf(DiscoveryPoller::class, new DiscoveryPoller());
+        $poller = new DiscoveryPoller();
+
+        $this->assertInstanceOf(DiscoveryPoller::class, $poller);
+
+        return $poller;
     }
 
-    public function testDiscoveryPollerReturnsAnArray()
+    /**
+     * @depends testCanCreateADiscoveryPollerInstance
+     */
+    public function testDiscoveryPollerReturnsAnArray(DiscoveryPoller $poller): void
     {
-        $this->assertIsArray((new DiscoveryPoller())->getOids());
+        $this->assertIsArray($poller->getOids());
     }
 
-    public function testDiscoveryPollerReturnsInfo()
+    /**
+     * @depends testCanCreateADiscoveryPollerInstance
+     */
+    public function testDiscoveryPollerReturnsInfo(DiscoveryPoller $poller): void
     {
-        $this->assertIsObject((new DiscoveryPoller())->info());
+        $this->assertIsObject($poller->info());
+    }
+
+    /**
+     * @depends testCanCreateADiscoveryPollerInstance
+     */
+    public function testDiscoveryPollerArrayHasKey(DiscoveryPoller $poller): void
+    {
+        $this->assertArrayHasKey('sysObjectID', $poller->getOids());
     }
 }
