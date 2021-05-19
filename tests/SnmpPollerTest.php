@@ -29,9 +29,4 @@ final class SnmpPollerTest extends TestCase
     {
         $this->assertIsObject((new DiscoveryPoller())->info());
     }
-
-//    public function test()
-//    {
-//        //
-//    }
 }
