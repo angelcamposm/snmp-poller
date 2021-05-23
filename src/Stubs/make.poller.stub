@@ -4,7 +4,7 @@ namespace App\Pollers;
 
 use Acamposm\SnmpPoller\Pollers\SnmpBasePoller;
 
-final class CustomPollerClassName extends BasePoller
+final class CustomPollerClassName extends SnmpBasePoller
 {
     /**
      * Specifies if the OIDs contained in $oids are table fields or leaves.
