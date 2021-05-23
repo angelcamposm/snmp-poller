@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Pollers;
+
+use Acamposm\SnmpPoller\Pollers\SnmpCustomPoller;
+
+final class CustomPollerClassName extends SnmpCustomPoller
+{
+    /**
+     * Specifies if the OIDs contained in $oids are table fields or leaves.
+     *
+     * @var bool
+     */
+    protected bool $is_table = IsTable;
+
+    /**
+     * Name of the SNMP Table.
+     *
+     * @var string
+     */
+    protected string $table = 'SnmpTableName';
+
+    /**
+     * SNMP OIDs to be queried.
+     *
+     * @var array
+     */
+    protected array $oids = [];
+
+    /**
+     * Unique ID of the Custom Poller.
+     *
+     * @var string
+     */
+    protected string $unique_id = 'UniqueID';
+}
