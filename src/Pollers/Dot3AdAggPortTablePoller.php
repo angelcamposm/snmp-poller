@@ -2,7 +2,7 @@
 
 namespace Acamposm\SnmpPoller\Pollers;
 
-class Dot3AdAggPortTablePoller
+final class Dot3AdAggPortTablePoller extends SnmpBasePoller
 {
     /**
      * Specifies if the OIDs contained in $oids are table fields or leaves.
