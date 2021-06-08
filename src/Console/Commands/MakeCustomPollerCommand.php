@@ -85,9 +85,7 @@ class MakeCustomPollerCommand extends GeneratorCommand
         // Next, We will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
         // code is untouched. Otherwise, we will continue generating this class' files.
-        if ((!$this->hasOption('force') ||
-                !$this->option('force')) &&
-            $this->alreadyExists($this->getNameInput())) {
+        if ($this->notForceOperation() && $this->customPollerExists()) {
             $this->error($this->type.' already exists!');
 
             return false;
@@ -107,6 +105,16 @@ class MakeCustomPollerCommand extends GeneratorCommand
         $this->info($this->type.' created successfully.');
 
         return 0;
+    }
+
+    private function notForceOperation(): bool
+    {
+        return (!$this->hasOption('force') || !$this->option('force'));
+    }
+
+    private function customPollerExists(): bool
+    {
+        return $this->alreadyExists($this->getNameInput());
     }
 
     private function replaceStringInFile($filename, $string_to_replace, $replace_with): void
