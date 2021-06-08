@@ -17,6 +17,7 @@ class CreateCustomPollersTable extends Migration
             $table->id();
             $table->string('name');
             $table->uuid('unique_id')->unique();
+            $table->unsignedInteger('vendor_id')->nullable();
             $table->boolean('is_table');
             $table->boolean('is_disabled');
             $table->timestamps();
