@@ -95,7 +95,8 @@ class MakeCustomPollerCommand extends GeneratorCommand
         // code is untouched. Otherwise, we will continue generating this class' files.
         if ((
             !$this->hasOption('force') ||
-            !$this->option('force')) &&
+            !$this->option('force')
+        ) &&
             $this->alreadyExists($this->getNameInput())
         ) {
             $this->error($this->type.' already exists!');

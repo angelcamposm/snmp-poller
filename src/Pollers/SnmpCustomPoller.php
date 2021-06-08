@@ -35,7 +35,6 @@ class SnmpCustomPoller implements SnmpPollerInterface
      */
     protected string $unique_id = '';
 
-
     public function __construct()
     {
         $this->configure();
@@ -98,7 +97,7 @@ class SnmpCustomPoller implements SnmpPollerInterface
 
     /**
      * Returns the record of the database associated with the custom poller.
-     * 
+     *
      * @return CustomPoller
      */
     private function getPollerDetails(): CustomPoller
@@ -110,9 +109,9 @@ class SnmpCustomPoller implements SnmpPollerInterface
 
     /**
      * Return an array with the oids of the custom poller stored in the database.
-     * 
+     *
      * @param CustomPoller $poller
-     * 
+     *
      * @return array
      */
     private function getOidsFromPoller(CustomPoller $poller): array
