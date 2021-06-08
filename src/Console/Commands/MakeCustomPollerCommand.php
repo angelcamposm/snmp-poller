@@ -12,7 +12,7 @@ class MakeCustomPollerCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'make:poller {name} {table=replace-with-table-name} {--is-table} {--f|force}';
+    protected $signature = 'make:poller-custom {name} {--table=replace-with-table-name} {--uuid=unique-id} {--is-table} {--f|force}';
 
     /**
      * The console command description.
@@ -20,6 +20,13 @@ class MakeCustomPollerCommand extends GeneratorCommand
      * @var string
      */
     protected $description = 'Create a new Custom Poller';
+
+    /**
+     * Indicates whether the command should be shown in the Artisan command list.
+     *
+     * @var bool
+     */
+    protected $hidden = false;
 
     /**
      * The type of class being generated.
@@ -35,7 +42,7 @@ class MakeCustomPollerCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return  base_path().'/vendor/acamposm/snmp-poller/src/Stubs/make.poller.stub';
+        return  base_path().'/vendor/acamposm/snmp-poller/src/Stubs/make.custom.poller.stub';
     }
 
     /**
@@ -46,8 +53,9 @@ class MakeCustomPollerCommand extends GeneratorCommand
     protected function getArguments()
     {
         return [
-            ['name', InputArgument::REQUIRED, 'The name of the CustomPoller.'],
+            ['name', InputArgument::REQUIRED, 'The name of the custom poller.'],
             ['table', InputArgument::REQUIRED, 'The name of the snmp table.'],
+            ['uuid', InputArgument::REQUIRED, 'Unique ID of the custom poller.'],
         ];
     }
 
@@ -98,9 +106,11 @@ class MakeCustomPollerCommand extends GeneratorCommand
 
         $this->files->put($path, $this->sortImports($this->buildClass($name)));
 
-        $this->replaceStringInFile($path, 'SnmpTableName', $this->argument('table'));
+        $this->replaceStringInFile($path, 'SnmpTableName', $this->option('table'));
 
         $this->replaceStringInFile($path, 'IsTable', $this->option('is-table') ? 'true' : 'false');
+
+        $this->replaceStringInFile($path, 'UniqueID', $this->option('uuid'));
 
         $this->info($this->type.' created successfully.');
 
