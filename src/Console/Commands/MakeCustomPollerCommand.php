@@ -119,7 +119,7 @@ class MakeCustomPollerCommand extends GeneratorCommand
 
     private function notForceOperation(): bool
     {
-        return (!$this->hasOption('force') || !$this->option('force'));
+        return !$this->hasOption('force') || !$this->option('force');
     }
 
     private function customPollerExists(): bool

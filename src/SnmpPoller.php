@@ -206,7 +206,7 @@ class SnmpPoller
         return [
             'code'    => $this->session->getErrno(),
             'message' => $this->session->getError(),
-            'result' => 'Exception',
+            'result'  => 'Exception',
         ];
     }
 
@@ -255,7 +255,6 @@ class SnmpPoller
         $oid_blank = 0;
 
         foreach ($poller->getOids() as $column => $oid) {
-
             try {
                 $query = $this->session->walk($oid, true);
             } catch (Exception $e) {
@@ -276,7 +275,7 @@ class SnmpPoller
 
         if ($oid_count === $oid_blank) {
             return (object) [
-                'data' => $snmp_walk,
+                'data'   => $snmp_walk,
                 'poller' => get_class($poller),
                 'result' => 'Exception',
                 'table'  => $poller->getTable(),
