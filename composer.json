@@ -21,7 +21,8 @@
     "require": {
         "php": "^8.0",
         "ext-snmp": "*",
-        "illuminate/console": "^8.41"
+        "illuminate/console": "^v8.42.1",
+        "illuminate/database": "^v8.42.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
