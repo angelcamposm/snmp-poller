@@ -201,13 +201,11 @@ class SnmpPoller
      *
      * @return stdClass
      */
-    private function returnErrorData(): stdClass
+    private function returnErrorData(): array
     {
-        return (object) [
-            'data' => [
-                'code'    => $this->session->getErrno(),
-                'message' => $this->session->getError(),
-            ],
+        return [
+            'code'    => $this->session->getErrno(),
+            'message' => $this->session->getError(),
             'result' => 'Exception',
         ];
     }
@@ -224,7 +222,7 @@ class SnmpPoller
         $snmp_get = [];
 
         foreach ($poller->getOids() as $key => $oid) {
-            $query = @$this->session->get($oid, true);
+            $query = $this->session->get($oid, true);
 
             if ($query === false) {
                 $this->returnErrorData();
@@ -253,24 +251,42 @@ class SnmpPoller
     {
         $snmp_walk = [];
 
+        $oid_count = count($poller->getOids());
+        $oid_blank = 0;
+
         foreach ($poller->getOids() as $column => $oid) {
-            $query = @$this->session->walk($oid, true);
+
+            try {
+                $query = $this->session->walk($oid, true);
+            } catch (Exception $e) {
+                $query = false;
+                $oid_blank++;
+            }
 
             if ($query === false) {
-                $this->returnErrorData();
-            }
+                $snmp_walk[$column] = $this->returnErrorData();
+            } else {
+                foreach ($query as $row => $value) {
+                    $parser = new SnmpParser($value);
 
-            foreach ($query as $row => $value) {
-                $parser = new SnmpParser($value);
-
-                $snmp_walk[$column][$row] = $parser->parse();
+                    $snmp_walk[$column][$row] = $parser->parse();
+                }
             }
+        }
+
+        if ($oid_count === $oid_blank) {
+            return (object) [
+                'data' => $snmp_walk,
+                'poller' => get_class($poller),
+                'result' => 'Exception',
+                'table'  => $poller->getTable(),
+            ];
         }
 
         return (object) [
             'data'   => $poller->isTable() ? $this->transposeTable($snmp_walk) : $snmp_walk,
             'poller' => get_class($poller),
-            'result' => 'OK',
+            'result' => $query === false ? 'KO' : 'OK',
             'table'  => $poller->getTable(),
         ];
     }
