@@ -6,10 +6,27 @@ use Illuminate\Console\Command;
 
 class InstallSnmpPackageCommand extends Command
 {
-    protected $signature = 'ping:install';
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'snmp:install';
 
-    protected $description = 'Install the Ping package';
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Install the SNMP Poller package';
 
+    /**
+     * Execute the console command.
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @return bool|null
+     */
     public function handle()
     {
         if (file_exists(config_path('snmp.php'))) {
@@ -18,13 +35,14 @@ class InstallSnmpPackageCommand extends Command
 
         $this->info('Installing Snmp Poller Package...');
 
-        $this->info('Publishing configuration...');
+        $this->info('Publishing package files...');
 
         $this->call('vendor:publish', [
-            '--provider' => 'Acamposm\SnmpPoller\SnmpPollerServiceProvider',
-            '--tag'      => 'config',
+            '--provider' => 'Acamposm\SnmpPoller\Providers\SnmpPollerServiceProvider',
         ]);
 
         $this->info('Snmp Poller Package installed.');
+
+        return 1;
     }
 }
