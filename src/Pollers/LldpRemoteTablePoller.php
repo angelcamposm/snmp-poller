@@ -24,9 +24,9 @@ final class LldpRemoteTablePoller extends SnmpBasePoller
      * @var array
      */
     protected array $oids = [
-        //'lldpRemTimeMark'         => '.1.0.8802.1.1.2.1.4.1.1.1',
-        //'lldpRemLocalPortNum'     => '.1.0.8802.1.1.2.1.4.1.1.2',
-        //'lldpRemIndex'            => '.1.0.8802.1.1.2.1.4.1.1.3',
+        'lldpRemTimeMark'         => '.1.0.8802.1.1.2.1.4.1.1.1',
+        'lldpRemLocalPortNum'     => '.1.0.8802.1.1.2.1.4.1.1.2',
+        'lldpRemIndex'            => '.1.0.8802.1.1.2.1.4.1.1.3',
         'lldpRemChassisIdSubtype' => '.1.0.8802.1.1.2.1.4.1.1.4',
         'lldpRemChassisId'        => '.1.0.8802.1.1.2.1.4.1.1.5',
         'lldpRemPortIdSubtype'    => '.1.0.8802.1.1.2.1.4.1.1.6',
