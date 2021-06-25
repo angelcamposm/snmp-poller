@@ -95,5 +95,4 @@ final class PrtMarkerSuppliesTablePoller extends SnmpBasePoller
         'prtMarkerSuppliesMaxCapacity'   => '.1.3.6.1.2.1.43.11.1.1.8',
         'prtMarkerSuppliesLevel'         => '.1.3.6.1.2.1.43.11.1.1.9',
     ];
-
 }
