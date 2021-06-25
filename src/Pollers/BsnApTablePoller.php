@@ -93,7 +93,7 @@ final class BsnApTablePoller extends SnmpBasePoller
             51 => 'ap1700i',
             52 => 'ap1700e',
             53 => 'ap1570e',
-            54 => 'ap1570i'
+            54 => 'ap1570i',
         ],
     ];
 
