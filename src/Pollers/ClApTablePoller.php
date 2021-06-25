@@ -121,7 +121,7 @@ final class ClApTablePoller extends SnmpBasePoller
      * @var array
      */
     protected array $oids = [
-//        'cLApSysMacAddress'                  => '.1.3.6.1.4.1.9.9.513.1.1.1.1.1',
+        // 'cLApSysMacAddress'                  => '.1.3.6.1.4.1.9.9.513.1.1.1.1.1',
         'cLApIfMacAddress'                   => '.1.3.6.1.4.1.9.9.513.1.1.1.1.2',
         'cLApMaxNumberOfDot11Slots'          => '.1.3.6.1.4.1.9.9.513.1.1.1.1.3',
         'cLApEntPhysicalIndex'               => '.1.3.6.1.4.1.9.9.513.1.1.1.1.4',

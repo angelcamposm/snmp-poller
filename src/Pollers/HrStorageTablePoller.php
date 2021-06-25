@@ -42,9 +42,9 @@ final class HrStorageTablePoller extends SnmpBasePoller
         'hrStorageIndex'              => '.1.3.6.1.2.1.25.2.3.1.1',
         'hrStorageType'               => '.1.3.6.1.2.1.25.2.3.1.2',
         'hrStorageDesc'               => '.1.3.6.1.2.1.25.2.3.1.3',
-//        'hrStorageAllocationUnits'    => '.1.3.6.1.2.1.25.2.3.1.4',
+        // 'hrStorageAllocationUnits'    => '.1.3.6.1.2.1.25.2.3.1.4',
         'hrStorageSize'               => '.1.3.6.1.2.1.25.2.3.1.5',
         'hrStorageUsed'               => '.1.3.6.1.2.1.25.2.3.1.6',
-//        'hrStorageAllocationFailures' => '.1.3.6.1.2.1.25.2.3.1.7',
+        // 'hrStorageAllocationFailures' => '.1.3.6.1.2.1.25.2.3.1.7',
     ];
 }

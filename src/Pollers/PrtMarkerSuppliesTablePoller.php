@@ -85,8 +85,8 @@ final class PrtMarkerSuppliesTablePoller extends SnmpBasePoller
      * @var array
      */
     protected array $oids = [
-//        'prtMarkerSuppliesIndex'         => '.1.3.6.1.2.1.43.11.1.1.1',
-//        'prtMarkerSuppliesMarkerIndex'   => '.1.3.6.1.2.1.43.11.1.1.2',
+        // 'prtMarkerSuppliesIndex'         => '.1.3.6.1.2.1.43.11.1.1.1',
+        // 'prtMarkerSuppliesMarkerIndex'   => '.1.3.6.1.2.1.43.11.1.1.2',
         'prtMarkerSuppliesColorantIndex' => '.1.3.6.1.2.1.43.11.1.1.3',
         'prtMarkerSuppliesClass'         => '.1.3.6.1.2.1.43.11.1.1.4',
         'prtMarkerSuppliesType'          => '.1.3.6.1.2.1.43.11.1.1.5',

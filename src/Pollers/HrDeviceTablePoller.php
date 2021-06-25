@@ -59,6 +59,6 @@ final class HrDeviceTablePoller extends SnmpBasePoller
         'hrDeviceDescr'  => '.1.3.6.1.2.1.25.3.2.1.3',
         'hrDeviceID'     => '.1.3.6.1.2.1.25.3.2.1.4',
         'hrDeviceStatus' => '.1.3.6.1.2.1.25.3.2.1.5',
-//        'hrDeviceErrors' => '.1.3.6.1.2.1.25.3.2.1.6',
+        // 'hrDeviceErrors' => '.1.3.6.1.2.1.25.3.2.1.6',
     ];
 }
